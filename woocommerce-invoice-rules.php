@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WooCommerce Invoices Conditions
  * Plugin URI:  https://spletodrom.si
- * Description: Custom integration with WooCommerce PDF Invoices & Packing Slips to handle B2B invoice conditions
+ * Description: Handle B2B/B2C invoice conditions
  * Version: 1.0.0
  * Author:      Elvis Sedić
  * Author URI:  https://spletodrom.si
