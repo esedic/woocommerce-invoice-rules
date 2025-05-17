@@ -30,6 +30,9 @@ if ( ! class_exists( 'Woocommerce_Invoice_Rules_Conditions' ) ) {
     require_once __DIR__ . '/includes/class-invoice-conditions.php';
 }
 
+use ESR\WooInvoiceRules\Woocommerce_Invoice_Rules_Conditions;
+use ESR\WooInvoiceRules\Woocommerce_Vies_Data_Helper;
+
 /**
  * Main plugin class
  */
