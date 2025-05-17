@@ -88,7 +88,6 @@ class Woocommerce_Invoice_Rules_Conditions {
         } else {
             $vat_number = get_user_meta( $user_id, 'vat_number', true ); // For registered users VAT number is by default available as user meta
         }
-        //error_log( 'VAT number: ' . $vat_number ); // Debugging line
 
         if ( empty( $vat_number ) ) {
             error_log('No VAT number available!');
@@ -96,10 +95,9 @@ class Woocommerce_Invoice_Rules_Conditions {
         }
         $vat_number = sanitize_text_field( $vat_number ); 
 
-        // 3. Validate the VAT number
+        // Validate the VAT number
         try {
             $vat_info = Woocommerce_Vies_Data_Helper::getVatIdInfo( $vat_number );
-            //error_log( 'VAT info: ' . print_r( $vat_info, true ) ); // Debugging line
         } catch ( Exception $e ) {
             // Log or handle validation service error
             error_log( 'VAT validation error: ' . $e->getMessage() );
@@ -111,7 +109,6 @@ class Woocommerce_Invoice_Rules_Conditions {
         }
 
         // 4. Act based on validation result
-        // if ( ! empty( $vat_info['validVies'] ) && $vat_info['validFormat'] ) {
         if ( isset( $vat_info['validFormat'], $vat_info['validVies'] ) && $vat_info['validFormat'] === true && $vat_info['validVies'] === true ) {
 
             // if VAT ID isn't from Slovenia
@@ -120,13 +117,9 @@ class Woocommerce_Invoice_Rules_Conditions {
             } else {
                 error_log( 'VAT ID is from Slovenia.' ); // Debugging line
             }   
-
-            // error_log( 'Message: ' . $vat_info['message'] ); // Debugging line
-            // Example: VAT is valid – perform custom logic (e.g. adjust order, notify, etc.)
-            // $order->add_order_note( 'Customer VAT is valid.' );
+            // Do something...
         } else {
-            // Example: VAT invalid – handle this case
-            // $order->add_order_note( 'Customer VAT is invalid.' );
+            // Do something...
         }
 
         // If you modified the order (e.g. changed tax), save it
